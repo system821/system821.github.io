@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>猴子MySQL | sptiz's blog</title><meta name="author" content="sptiz"><meta name="copyright" content="sptiz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="猴子MySQLSQL语句一共分为3类：数据定义语言(DDL)、数据查询语言(DQL)、数据操纵语言(DML)。 数据定义语言(DDL) 这类语句用于对数据库、数据表的相关操作，如创建表(create)、修改表结构(alter)、删除(drop)表 数据查询语言(DQL) select xx from xx where 数据操纵语言(DML) inset update delete 基础查询简单查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="猴子MySQL">
+<meta property="og:url" content="https://system821.github.io/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/index.html">
+<meta property="og:site_name" content="sptiz&#39;s blog">
+<meta property="og:description" content="猴子MySQLSQL语句一共分为3类：数据定义语言(DDL)、数据查询语言(DQL)、数据操纵语言(DML)。 数据定义语言(DDL) 这类语句用于对数据库、数据表的相关操作，如创建表(create)、修改表结构(alter)、删除(drop)表 数据查询语言(DQL) select xx from xx where 数据操纵语言(DML) inset update delete 基础查询简单查询">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://system821.github.io/img/mysql.png">
+<meta property="article:published_time" content="2026-03-31T08:25:08.000Z">
+<meta property="article:modified_time" content="2026-04-02T05:33:19.148Z">
+<meta property="article:author" content="sptiz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://system821.github.io/img/mysql.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "猴子MySQL",
+  "url": "https://system821.github.io/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/",
+  "image": "https://system821.github.io/img/mysql.png",
+  "datePublished": "2026-03-31T08:25:08.000Z",
+  "dateModified": "2026-04-02T05:33:19.148Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "sptiz",
+      "url": "https://system821.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://system821.github.io/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '猴子MySQL',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/mysql.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">sptiz's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">猴子MySQL</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">猴子MySQL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-31T08:25:08.000Z" title="发表于 2026-03-31 16:25:08">2026-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-02T05:33:19.148Z" title="更新于 2026-04-02 13:33:19">2026-04-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/">数据库技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="猴子MySQL"><a href="#猴子MySQL" class="headerlink" title="猴子MySQL"></a>猴子MySQL</h1><p>SQL语句一共分为3类：<span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">数据定义语言(DDL)</span>、<span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">数据查询语言(DQL)</span>、<span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">数据操纵语言(DML)</span>。</p>
+<p><strong>数据定义语言(DDL)</strong></p>
+<p>这类语句用于对数据库、数据表的相关操作，如创建表(create)、修改表结构(alter)、删除(drop)表</p>
+<p><strong>数据查询语言(DQL)</strong></p>
+<p>select xx from xx where</p>
+<p><strong>数据操纵语言(DML)</strong></p>
+<p>inset update delete</p>
+<h2 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h2><h3 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h3><p>(1)用is null语句来查询空值</p>
+<p>(2)用as关键字对字段进行重命名（起别名)</p>
+<p>(3)用distinct关键字去掉重复数据</p>
+<h3 id="汇总函数与分组"><a href="#汇总函数与分组" class="headerlink" title="汇总函数与分组"></a>汇总函数与分组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select 列名</span><br><span class="line">from 表名</span><br><span class="line">group by 列名 #当group by后面跟多个列时，这几个列的值全部相同才能算为一组</span><br><span class="line">having count(列名)&gt;1;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mysql运行顺序"><a href="#Mysql运行顺序" class="headerlink" title="Mysql运行顺序"></a>Mysql运行顺序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select 查询结果</span><br><span class="line">from 从哪个表中查找数据</span><br><span class="line">where 查询条件</span><br><span class="line">group by分组</span><br><span class="line">having 对分组结果指定条件</span><br><span class="line">order by 对查询结果进行排序</span><br><span class="line">limt 从查询结果取出限定行;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复杂查询"><a href="#复杂查询" class="headerlink" title="复杂查询"></a>复杂查询</h2><p><span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;"> 子查询</span>、<span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">临时表with…as</span>、<span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">视图</span>、<span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">case表达式（用于多条件判断</span></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p><span style="color:#2a6394;border-bottom:1.5px dashed #2a6394;">子查询就是在from子句中直接写SQL查询语句，也就是将多个SQL查询语句嵌套在一起。这个嵌套的SQL查询语句就是子查询</span>。</p>
+<p>使用子查询时，可以把子查询看作临时表，也就是子查询的查询结果表，因为这个查询结果表并不是真实存放在数据库中的表，所以把这样的表称为临时表。</p>
+<p>使用子查询时，一般需要用as关键字给子查询起个别名，方便在SQL其他地方使用。另外，如果不用as关键字给子查询起别名，那么有时候会报错：“1248-Every derived table must have its own alias”。</p>
+<p>案例：查询第二名的成绩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select max(distinct 成绩)</span><br><span class="line">from 成绩表</span><br><span class="line">where 课程=’语文‘ and 成绩 &lt; (select max(distinct 成绩) from 成绩表 where 课程=’语文‘)</span><br></pre></td></tr></table></figure>
+
+<p> <strong>in（子查询）</strong></p>
+<p>in常用于where子句中，表示查询某个范围内的数据。in和子查询结合在一起的用法是：in（子查询）。</p>
+<p><strong>all（子查询）</strong></p>
+<p>all常用于where子句中，表示要满足all（子查询）里的所有条件。下面通过两个表格：表格A和表格B，来直观地展示如何使用all（子查询</p>
+<p><strong>any（子查询）</strong></p>
+<p>any常用于where子句中，表示只需满足ang（子查询）里的任意一个条件就可以。</p>
+<h3 id="临时表with…as"><a href="#临时表with…as" class="headerlink" title="临时表with…as"></a>临时表with…as</h3><p>解决嵌套的子查询太多的问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">with</span><br><span class="line">临时表名称1 as 子查询语句1，</span><br><span class="line">临时表名称2 as 资产语句2，</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">with</span><br><span class="line">a as (select distinct 顾客id from 销售表 where 产品=“productA”),</span><br><span class="line">b as (select distinct 顾客id from 销售表 where 产品=“productb”),</span><br><span class="line">c as (select distinct 顾客id from 销售表 where 产品=“productc”)</span><br><span class="line">select count(distinct 顾客id)</span><br><span class="line">from 销售表</span><br><span class="line">where </span><br><span class="line">顾客id in (select * from a)</span><br><span class="line">and</span><br><span class="line">顾客id in (select * from b)</span><br><span class="line">and</span><br><span class="line">顾客id not in (select * from c)</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<p>① 用 <code>WITH...AS</code> 定义的临时表（CTE，Common Table Expression）**，**只能在它后面紧接的那一条 SQL 语句里用</p>
+<p>② 用<code>with…as</code>语句定义的临时表不需要删除，因为它在创建并使用后即释放，不会真实存放在数据库里。可以理解为，将一条SQL语句中的一部分片段封装起来，方便使用。因此，用with…as语句定义的临时表，属于后面直接使用该临时表的SQL语句的一部分，所以，在定义临时表后不能加语句结束符“；”。上面案例的with…as语句中我们就没有加分号“；”。</p>
+<p>③ 如果with…as语句定义的临时表名称与某个数据表或视图重名，则紧跟在该with…as语句后面的SQL语句使用的仍然是临时表，而没有紧跟在with…as语句后面的SQL语句使用的是数据表或视图</p>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create view 公积金 as </span><br><span class="line">select 姓名，缴纳金额</span><br><span class="line">from 公积金缴纳表</span><br></pre></td></tr></table></figure>
+
+<p>with…as语句与视图的区别如下：</p>
+<p>(1)with…as语句创建的是一个临时表，使用后即释放，不存放在数据库中，不需要删除；视图存储在数据库中，创建的是虚拟表，若要释放存储空间，则需要进行删除。</p>
+<p>(2)with…as语句不能使用语句结束符“；”；创建视图的语句是一条完整的SQL语句，需要使用语句结束符“；”。</p>
+<p>(3)with…as语句定义的临时表只能使用在紧跟其后的select语句中；视图则可以在不同的SQL语句中反复多次调用。</p>
+<p>(4)with…as语句的作用主要是提高SQL语句的易读性；视图除了可以提高SQL语句的易读性，也有保证数据安全的作用</p>
+<h3 id="case表达式"><a href="#case表达式" class="headerlink" title="case表达式"></a>case表达式</h3><p>case表达式用于多条件判断，你可以把case表达式看作一个多条件判断的函数，用于判断表中每一行数据是否满足某个条件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case</span><br><span class="line">when &lt; 条件判断表达式 &gt; then &lt; 结果表达式 &gt; </span><br><span class="line">when &lt; 条件判断表达式 &gt; then &lt; 结果表达式 &gt; </span><br><span class="line">when &lt; 条件判断表达式 &gt; then &lt; 结果表达式 &gt; </span><br><span class="line">...</span><br><span class="line">else &lt; 结果表达式 &gt; </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select 学号，成绩，</span><br><span class="line">(case when 成绩&gt;=60 then &#x27;及格&#x27;</span><br><span class="line">			when 成绩 &lt;60 then &#x27;不及格&#x27;</span><br><span class="line">			else null</span><br><span class="line">end) as 是否及格</span><br><span class="line">from 学生成绩表；</span><br></pre></td></tr></table></figure>
+
+<p>case表达式常用于解决下面几类问题：</p>
+<p>(1)多条件判断问题</p>
+<p>(2)按区间统计问题</p>
+<p>(3)行列互换问题</p>
+<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><p><strong>思考策略：</strong></p>
+<p><strong>(1) 什么时候需要用多表连接？</strong></p>
+<p>当需要查询的数据涉及多个表时，需要想到用多表连接的方法。</p>
+<p><strong>(2)选择哪种类型的连接？</strong></p>
+<p>SQL中多表连接的类型包括<span style="color:#2a6394;border-bottom:1.5px dashed #2a6394;">内连接(inner join)</span>、<span style="color:#2a6394;border-bottom:1.5px dashed #2a6394;">左连接(left join)</span>、<span style="color:#2a6394;border-bottom:1.5px dashed #2a6394;">右连接(right join)</span>、<span style="color:#2a6394;border-bottom:1.5px dashed #2a6394;">全连接(full join)</span>。如何选择呢？</p>
+<p><span style="color:#be3a33;border-bottom:1.5px dashed #be3a33;">在实际业务中，<strong>当想要生成固定行数的表单或者特别说明了要哪一个表里的全部数据时，就使用左连接或者右连接。其他情况用内连接，取两个表的公共部分</strong></span>。</p>
+<p>全连接的本质是返回左右表中的所有数据，但是全连接在实际工作中应用频率比较低，因为很少有业务问题需要用两个表中的所有数据。同时，有些数据库不支持全连接功能。</p>
+<p><strong>(3)多个表之间通过哪个字段连接？</strong></p>
+<p>一般多个表会通过某个字段产生关联，这在实际业务问题中会有明确说明。</p>
+<p><strong>(4)写出对应连接的SQL语句。</strong></p>
+<p>多表连接使用join操作语句。各个类型连接的SQL语句，总结为如表示，可以说，记住这张图中的SQL连接语句，就掌握了多表查询。读者可以把这张图看作多表查询的万能模板<br><img src="img/mysql.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://system821.github.io">sptiz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://system821.github.io/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/">https://system821.github.io/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://system821.github.io" target="_blank">sptiz's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="post-share"><div class="social-share" data-image="/img/mysql.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/03/28/%E4%BA%BA%E7%89%A9/" title="人物"><img class="cover" src="/img/snow.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">人物</div></div><div class="info-2"><div class="info-item-1">查理·芒格1924年1月1日—2023年11月28日 历史关键点1929股市崩盘：10月29日”黑色星期二”，股市暴跌引发大萧条 1941年12月7：日本偷袭珍珠港，美国参加二战 其他网站获得物想要得到你想要的，就必须配得上你想要的。信任、成功和赞赏都是靠自己赢得的 获取智慧既是道德义务，也是实际义务 | 如果文明只有发明出发明的方法才能进步，那么你们也只有学会学习的方法才能进步 学会正向思考和反向思考问题 要可靠。不可靠会抵消其他优点 避免极端意识形态。始终像认真对待自己的观点一样认真对待对方的观点 |我认为应该避免的另一件事是过于强烈的意识形态，因为它会麻痹人的思想 摒弃自私自利的偏见、嫉妒、怨恨和自怜 |自怜非常接近妄想症，而妄想症是最难克服的心理状态之一。你绝对不想陷入自怜的泥沼 | 当然还有自利偏见，你想摆脱这种偏见；认为对你有利的事情对整个文明也有好处，并基于潜意识中服务于自身的倾向，合理化所有这些荒谬的结论。  你还得考虑到其他人的自利偏见，因为大多数人很难完全消除这种偏见，人性就是如此。如果你在自己的行为中忽略了自利偏见，那你就是个傻瓜 避免成为激励机制扭曲的体制...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/26/MySQL/" title="MySQL"><img class="cover" src="/img/mysql.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-26</div><div class="info-item-2">MySQL</div></div><div class="info-2"><div class="info-item-1">Mysql数据库设计关系模型 “关系模型（Relational Model）是一种基于表的数据模型”。核心思想是将数据组“织成表，每个表包含一组相关的行和列  属性介绍笛卡儿积（交叉连接，Cross Join）：第一个关系的每一行数据分别与第二个关系的每一行数据组合” 自然连接（Natural Join）：第一个关系的每一行数据与第二个关系的每一行数据进行匹配，若得到交叉部分则合并，若无交叉部分则舍弃” θ连接（Theta Join）：加上约束条件的笛卡儿积，先得到笛卡儿积，再根据约束条件删除不满足条件的元组。 外连接（Outer Join）：执行自然连接后，将舍弃的部分也加入，并且把匹配失败处的属性设置为null。 三大范式第一范式（1NF）：目标是确保每列的原子性，如果每列都是不可再分的最小数据单元（也被称为最小的原子单元），则满足第一范式” 如：中国北京 第二范式（2NF）：要求每张表只描述一件事情。如：将总表拆分为Guest表和Room表” “第三范式（3NF）：如果一个关系满足第二范式，并且除了主键以外的其他列都不依赖于主键列，则满足第三范式” 创建数据库123mysq...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">sptiz</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自由散漫的无聊生活</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8C%B4%E5%AD%90MySQL"><span class="toc-text">猴子MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2"><span class="toc-text">基础查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2"><span class="toc-text">简单查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E6%80%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E5%88%86%E7%BB%84"><span class="toc-text">汇总函数与分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mysql%E8%BF%90%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">Mysql运行顺序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2"><span class="toc-text">复杂查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E8%A1%A8with%E2%80%A6as"><span class="toc-text">临时表with…as</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">case表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">多表查询</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/" title="猴子MySQL"><img src="/img/mysql.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="猴子MySQL"/></a><div class="content"><a class="title" href="/2026/03/31/%E7%8C%B4%E5%AD%90MySQL/" title="猴子MySQL">猴子MySQL</a><time datetime="2026-03-31T08:25:08.000Z" title="发表于 2026-03-31 16:25:08">2026-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/28/%E4%BA%BA%E7%89%A9/" title="人物"><img src="/img/snow.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人物"/></a><div class="content"><a class="title" href="/2026/03/28/%E4%BA%BA%E7%89%A9/" title="人物">人物</a><time datetime="2026-03-28T07:44:48.000Z" title="发表于 2026-03-28 15:44:48">2026-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/28/Naval%E4%B9%A6%E7%B1%8D%E6%B8%85%E5%8D%95/" title="Naval书籍清单"><img src="/img/naval.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Naval书籍清单"/></a><div class="content"><a class="title" href="/2026/03/28/Naval%E4%B9%A6%E7%B1%8D%E6%B8%85%E5%8D%95/" title="Naval书籍清单">Naval书籍清单</a><time datetime="2026-03-28T06:29:34.000Z" title="发表于 2026-03-28 14:29:34">2026-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/07/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程"><img src="/img/tasks.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java多线程"/></a><div class="content"><a class="title" href="/2026/03/07/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">Java多线程</a><time datetime="2026-03-07T05:24:01.000Z" title="发表于 2026-03-07 13:24:01">2026-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/01/java%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90%E9%97%AE%E7%AD%94/" title="java技术解析问答"><img src="/img/que.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java技术解析问答"/></a><div class="content"><a class="title" href="/2026/03/01/java%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90%E9%97%AE%E7%AD%94/" title="java技术解析问答">java技术解析问答</a><time datetime="2026-03-01T06:22:38.000Z" title="发表于 2026-03-01 14:22:38">2026-03-01</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By sptiz</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
