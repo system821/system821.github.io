@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SpringCloud框架技术 | sptiz's blog</title><meta name="author" content="sptiz"><meta name="copyright" content="sptiz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SpringCloud 框架技术基础知识查看SpringBoot与SpringCloud之间的关系：https:&#x2F;&#x2F;spring.io&#x2F;projects&#x2F;spring-cloud 负载均衡基本概念 LoadBalancer 解决的是：在客户端（调用方）决定请求哪个服务实例  负载均衡在系统架构中是一个非常重要并且不得不去实现的内容。因为负载均衡是使系统高可用、缓解网络压力和扩容处理能力的重要手段之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud框架技术">
+<meta property="og:url" content="https://system821.github.io/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="sptiz&#39;s blog">
+<meta property="og:description" content="SpringCloud 框架技术基础知识查看SpringBoot与SpringCloud之间的关系：https:&#x2F;&#x2F;spring.io&#x2F;projects&#x2F;spring-cloud 负载均衡基本概念 LoadBalancer 解决的是：在客户端（调用方）决定请求哪个服务实例  负载均衡在系统架构中是一个非常重要并且不得不去实现的内容。因为负载均衡是使系统高可用、缓解网络压力和扩容处理能力的重要手段之">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://system821.github.io/img/clouds.png">
+<meta property="article:published_time" content="2026-04-23T05:05:59.000Z">
+<meta property="article:modified_time" content="2026-04-25T09:17:55.982Z">
+<meta property="article:author" content="sptiz">
+<meta property="article:tag" content="SpringCloud、框架技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://system821.github.io/img/clouds.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SpringCloud框架技术",
+  "url": "https://system821.github.io/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/",
+  "image": "https://system821.github.io/img/clouds.png",
+  "datePublished": "2026-04-23T05:05:59.000Z",
+  "dateModified": "2026-04-25T09:17:55.982Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "sptiz",
+      "url": "https://system821.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://system821.github.io/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SpringCloud框架技术',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/clouds.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">sptiz's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">SpringCloud框架技术</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">SpringCloud框架技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-23T05:05:59.000Z" title="发表于 2026-04-23 13:05:59">2026-04-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-25T09:17:55.982Z" title="更新于 2026-04-25 17:17:55">2026-04-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/">框架技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="SpringCloud-框架技术"><a href="#SpringCloud-框架技术" class="headerlink" title="SpringCloud 框架技术"></a>SpringCloud 框架技术</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>查看SpringBoot与SpringCloud之间的关系：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud">https://spring.io/projects/spring-cloud</a></p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><blockquote>
+<p>LoadBalancer 解决的是：<strong>在客户端（调用方）决定请求哪个服务实例</strong></p>
+</blockquote>
+<p>负载均衡在系统架构中是一个非常重要并且不得不去实现的内容。因为负载均衡是使系统高可用、缓解网络压力和扩容处理能力的重要手段之一。通常所说的负载均衡指的是服务端负载均衡，其中分为硬件负载均衡和软件负载均衡。硬件负载均衡主要通过在服务器节点之间安装专门用于负载均衡的设备来实现，比如F5等；而软件负载均衡则通过在服务器上安装一些具有负载均衡功能或模块的软件来实现，比如Nginx等</p>
+<p><strong>服务负载均衡</strong></p>
+<p><span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;"><strong>[客户端] —–&gt;  [负载均衡器]  —–&gt;  【各个服务节点】</strong></span></p>
+<p>客户端发送请求到负载均衡器(Load Balancer, LB)，然后这台负载均衡器负责将接收到的各个请求转发到运行中的某个服务节点上，接收到请求的服务节点做响应处理<br>负载均衡器运行在一台独立的服务器上并充当代理(Proxy)。所有的请求都需要通过负载均衡器的转发才能实现服务调用，这可能会是一个问题，因为当服务请求量越来越大时，负载均衡器将会成为系统的瓶颈。同时，一旦负载均衡器自身发生失败，整个微服务的调用过程都将发生失败。因此，为了避免集中式负载均衡所带来的这种问题，采用客户端负载均衡，这同样是一种常用的实现方式。</p>
+<p><strong>客户端负载均衡</strong><br>简单来说，客户端负载均衡就是在客户端程序内部设定一个调度算法，在向服务器发起请求时，先执行调度算法计算出目标服务器地址。<br>与服务端负载均衡相比，客户端负载均衡<span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;">不需要架设专门的服务端代理</span>。如果客户端应用程序能够获取服务列表，并具备成熟的调度算法，就可以对外提供相关的API，从而成为一种独立的工具和框架。在微服务架构的实现框架中，客户端负载均衡是常见的负载均衡实现方案，包括<code>Dubbo</code>和<code>Spring Cloud/Spring Cloud Alibaba</code>在内的很多框架采用的都是<span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;">客户端负载均衡机制</span></p>
+<p><strong>负载均衡算法</strong><br>1.静态负载均衡算法<br>(1)随机算法<br>(2)轮询算法<br>2.动态负载均衡算法<br>(1)最少连接数算法<br>(2)服务调用时延算法<br>(3)源IP哈希算法</p>
+<h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><p>负载均衡整体流程：</p>
+<p>order-service 发起调用 user-service<br>▼</p>
+<p>OpenFeign 拦截请求，发现服务名 “user-service”<br>▼</p>
+<p>LoadBalancer 从 Nacos 拉取 “user-service” 的所有实例列表<br>▼</p>
+<p>LoadBalancer 根据策略（默认轮询）选择一个实例<br>▼</p>
+<p>将 “user-service” 替换为真实 IP:Port，发起 HTTP 请求</p>
+<p><strong>LoadBalancer跟OpenFeign关系：</strong></p>
+<p>LoadBalancer 的作用：从 Nacos 拿到一堆服务实例，按一定策略（轮询&#x2F;随机等）帮你挑一个，把服务名换成真实地址，完成调用。<br>它和 OpenFeign 是搭档关系：<br>OpenFeign：负责声明式 HTTP 调用（像调用本地方法一样调用远程接口）<br>LoadBalancer：负责选择具体调用哪个实例（负载均衡）<br>两者结合，你写代码时完全感知不到远程调用和负载均衡的存在，就像调用本地方法一样简单</p>
+<h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><h5 id="Ribbon-1"><a href="#Ribbon-1" class="headerlink" title="Ribbon"></a>Ribbon</h5><p>Spring Cloud Ribbon是一个基于HTTP和TCP的客户端负载均衡工具，它基于Netflix Ribbon实现。通过Spring Cloud的封装，可以让使用者<span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;"><strong>轻松地将面向服务的REST模板请求自动转换成客户端负载均衡的服务调用</strong></span>。</p>
+<p>Ribbon主要有以下三大子模块：</p>
+<p>(1)<font color="#10b981">Ribbon-Core:</font> 该模块为Ribbon的核心，主要包括负载均衡器接口定义、客户端接口定义、内置的负载均衡实现等API</p>
+<p>(2)<font color="#10b981">Ribbon-Eureka</font>: 该模块为Eureka客户端提供负载均衡实现类</p>
+<p>(3)<font color="#10b981">Ribbon-HttpClient:</font>该模块提供含有负载均衡功能的REST客户端，用于对Apache的HttpClient进行封装</p>
+<p>Ribbon的两个主要作用：</p>
+<p>(1)基于Ribbon<font color="#a48eda"><strong>实现服务调用</strong></font>，是通过拉取到的所有服务列表组成（服务名称请求路径的）映射关系，借助RestTemplate最终实现的。</p>
+<p>(2)当有多个服务提供者时，Ribbon可以根据<font color="#a48eda"><strong>负载均衡</strong></font>的算法自动选择需要调用的服务地址。</p>
+<p>90% 的情况下，Ribbon 是”空气”——你在用 Feign 或 <code>@LoadBalanced</code> RestTemplate 时，它自动干活，你无感知。</p>
+<p>只有 10% 的情况下需要显式配置——当你对负载均衡有特殊需求（灰度、权重、机房路由）时，才需要动手改 Ribbon 的规则。</p>
+<p><strong>Nginx和Ribbon区别：</strong></p>
+<p>Nginx 和 Ribbon&#x2F;Spring Cloud LoadBalancer 都负责负载均衡，但它们工作的位置和侧重点完全不同。</p>
+<ul>
+<li><strong>Nginx 是服务端负载均衡</strong>（也叫集中式负载均衡）。请求先打到 Nginx，由 Nginx 决定转发给哪个后端服务器。</li>
+<li><strong>Ribbon&#x2F;Spring Cloud LoadBalancer 是客户端负载均衡</strong>（也叫软负载）。调用方知道自己要调谁，自己从注册中心查列表，自己决定发给哪个实例。</li>
+</ul>
+<img src="https://s3.bmp.ovh/2026/04/25/fb5koIOh.png" alt="1.png" style="zoom:30%;" />
+
+
+
+
+
+
+
+
+
+<h2 id="SpirngCloud-Gateway"><a href="#SpirngCloud-Gateway" class="headerlink" title="SpirngCloud Gateway"></a>SpirngCloud Gateway</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p><span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;"><strong>服务网关</strong>：请求管理，路由规则，日志记录，安全管理，访问控制，服务适配，过滤器，网关限流</span></p>
+<p>作为系统访问的<span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;">唯一入口</span>，服务网关是一种服务端应用。从设计模式上讲，我们也可以把服务网关看作外观(Facade)模式的一种具体表现形式。外观模式的作用就是把复杂度屏蔽在系统内部，从而缓解耦合，在微服务架构中，服务网关的核心要点在于，所有的客户端和第三方服务都通过统一的网关接入到微服务系统，并在网关层处理所有的非业务功能。服务网关的作用体现在解耦、API优化和简化调用过程等主要方面。</p>
+<p>Spring Cloud Gateway组件Spring Cloud Gateway中的核心组件有三个，分别是<font color="#c41e3a"><strong>路由(Route)</strong>、**谓词(Predicate)**和 <strong>过滤器(Filter)</strong></font>。</p>
+<p>(1) 路由路由是网关最基础的部分，路由信息由一个ID，一个目标URL、一组断言工厂和一组过滤器组成。如果断言为真，则说明请求URL和配置的路由匹配</p>
+<p>(2) 谓词Spring Cloud Gateway中的谓词函数允许开发者去定义匹配来自HTTP请求的任何信息，比如请求头和参数等，符合谓词规则的请求才能通过。而所谓谓词，本质上是一种判断条件，用于将HTTP请求与路由进行匹配。Spring Cloud Gateway内置了大量的谓词组件，可以分别对HTTP请求的消息头、请求路径等常见的路由媒介进行自动匹配以便决定路由结果</p>
+<p>(3) 过滤器一个标准的Spring WebFilter, Spring Cloud Gateway中的Filter分为两种类型，即 <font color="#10b981"><strong>Gateway Filter</strong></font>和 <font color="#10b981"><strong>Global Filter</strong></font>。 <font color="#10b981"><strong>过滤器可以对请求处理过程进行拦截，从而添加定制化处理机制</strong></font>。Spring Cloud Gateway中的过滤器和Zuul等其他框架中的过滤器是同一个概念，都可以用于响应HTTP请求之前或之后修改请求本身及对应的响应结果，区别在于两者的类型和实现方式不同。</p>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p><strong>管道-过滤器架构模式</strong></p>
+<p>管道-过滤器在结构上是一种组合行为，通常以<span style="background:linear-gradient(90deg,rgba(255,183,197,0.3),transparent);padding:0 4px;border-radius:2px;color:#e63946;">切面(Aspect)</span>的方式在主流程上添加定制化组件。当我们在阅读一些开源框架代码时，看到Filter（过滤器）或Interceptor（拦截器）等名词时，往往就是碰上了管道-过滤器模式</p>
+<p><strong>Spring MVC模式</strong></p>
+<p>请求到达 → ServletRequest → 过滤器链 → DispatcherServlet → 遍历 HandlerMapping → 找到匹配的 Handler → 通过 HandlerAdapter 执行 → 返回响应</p>
+<p>DispatcherServlet 拿着请求，挨个问 HandlerMapping“谁能处理这个 URL”，找到后交给 HandlerAdapter 去干活。</p>
+<p><strong>Spring WebFlux模式（响应式Web框架）</strong></p>
+<p>请求 → Reactive 服务器 → WebFilterChain → DispatcherHandler → HandlerMapping → HandlerAdapter → 处理器（Controller &#x2F; RouterFunction） → 返回 Mono&#x2F;Flux</p>
+<p><strong>Spring MVC 与 Spring WebFlux 对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">Spring MVC</th>
+<th align="left">Spring WebFlux</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>底层 API</strong></td>
+<td align="left">Servlet API（阻塞 I&#x2F;O）</td>
+<td align="left">Reactive Streams（非阻塞 I&#x2F;O）</td>
+</tr>
+<tr>
+<td align="left"><strong>容器</strong></td>
+<td align="left">Servlet 容器（Tomcat、Jetty、Undertow）</td>
+<td align="left">响应式容器（Netty、Jetty 响应式、Servlet 3.1+ 容器）</td>
+</tr>
+<tr>
+<td align="left"><strong>线程模型</strong></td>
+<td align="left">每个请求一个线程（线程池），线程阻塞等待</td>
+<td align="left">少量固定线程（如 Netty 事件循环），非阻塞</td>
+</tr>
+<tr>
+<td align="left"><strong>并发能力</strong></td>
+<td align="left">受线程池大小限制，适合 CPU 密集型或中等 I&#x2F;O</td>
+<td align="left">极高，适合 I&#x2F;O 密集、长连接、高并发场景</td>
+</tr>
+<tr>
+<td align="left"><strong>前端控制器</strong></td>
+<td align="left"><code>DispatcherServlet</code>（继承 <code>HttpServlet</code>）</td>
+<td align="left"><code>DispatcherHandler</code>（不是 Servlet）</td>
+</tr>
+<tr>
+<td align="left"><strong>请求入口</strong></td>
+<td align="left">Servlet 容器 → 过滤器链 → <code>DispatcherServlet</code></td>
+<td align="left">Reactive 服务器 → <code>WebFilterChain</code> → <code>DispatcherHandler</code></td>
+</tr>
+<tr>
+<td align="left"><strong>映射处理器 (HandlerMapping)</strong></td>
+<td align="left"><code>BeanNameUrlHandlerMapping</code> <code>RequestMappingHandlerMapping</code></td>
+<td align="left"><code>RequestMappingHandlerMapping</code> <code>RouterFunctionMapping</code></td>
+</tr>
+<tr>
+<td align="left"><strong>适配器 (HandlerAdapter)</strong></td>
+<td align="left"><code>RequestMappingHandlerAdapter</code> 等</td>
+<td align="left"><code>RequestMappingHandlerAdapter</code> <code>HandlerFunctionAdapter</code></td>
+</tr>
+<tr>
+<td align="left"><strong>处理器 (Handler)</strong></td>
+<td align="left"><code>@Controller</code> + <code>@RequestMapping</code> 方法</td>
+<td align="left"><code>@Controller</code> + <code>@RequestMapping</code> 方法 或 <code>RouterFunction</code>（函数式）</td>
+</tr>
+<tr>
+<td align="left"><strong>返回值</strong></td>
+<td align="left"><code>ModelAndView</code>、<code>String</code>、<code>ResponseEntity</code> 等</td>
+<td align="left"><code>Mono</code>、<code>Flux</code>、<code>Mono&lt;ServerResponse&gt;</code> 等</td>
+</tr>
+<tr>
+<td align="left"><strong>适用场景</strong></td>
+<td align="left">传统 Web 应用、RESTful API（非极端高并发）</td>
+<td align="left">高并发、长连接、流式响应、网关、微服务边缘服务</td>
+</tr>
+<tr>
+<td align="left"><strong>学习曲线</strong></td>
+<td align="left">相对平缓</td>
+<td align="left">需要理解响应式编程（Reactor、背压等）</td>
+</tr>
+</tbody></table>
+<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>客户端   ▶ DispatcherHandler 【WebFlux 前端控制器（网关中也用它】 ▶ RoutePredicateHandlerMapping【根据断言（Predicate）匹配路由】(断言失败 → 无法匹配路由，返回错误&#x2F;404 | 断言成功  ▶   lookupRoute（找到匹配的路由定义） ▶   FilteringWebHandler  获取该路由关联的过滤器链) ▶    Filter → Filter → Filter   ← 依次执行（前置&#x2F;后置逻辑）▶  目标服务</p>
+<table>
+<thead>
+<tr>
+<th align="left">组件</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>DispatcherHandler</strong></td>
+<td align="left">WebFlux 统一入口，分发请求</td>
+</tr>
+<tr>
+<td align="left"><strong>RoutePredicateHandlerMapping</strong></td>
+<td align="left">核心路由匹配器，用断言（如 <code>Path=/api/**</code>、<code>Method=GET</code>）判断是否匹配某路由</td>
+</tr>
+<tr>
+<td align="left"><strong>lookupRoute</strong></td>
+<td align="left">断言成功后，获取匹配的路由定义（含目标 URI + 过滤器列表）</td>
+</tr>
+<tr>
+<td align="left"><strong>FilteringWebHandler</strong></td>
+<td align="left">执行该路由下的所有 <code>GatewayFilter</code>（类似局部过滤器链）</td>
+</tr>
+<tr>
+<td align="left"><strong>Filter 链</strong></td>
+<td align="left">依次执行过滤器（可做鉴权、日志、重试、限流等），最后转发到目标服务</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>请求进入 DispatcherHandler → 通过 RoutePredicateHandlerMapping 逐一断言匹配路由 → 找到后取出路由关联的过滤器链 → 依次执行过滤器 → 转发到目标服务</strong></p>
+</blockquote>
+<p>这本质上是一个 <strong>“断言匹配 + 过滤器链 + 代理转发”</strong> 的网关处理模型</p>
+<p>Spring Cloud Gateway的核心功能就是<strong>请求路由</strong>和<strong>转发</strong>，而围绕这一核心功能，开发人员可以做的事情有很多，比如实现对服务的灰度发布、实现对请求的拦截并添加异常处理机制、实现对请求的限流降级等</p>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>在Spring Cloud Gateway中内置了许多过滤器，这些过滤器可以分成两大类，即<code>GatewayFilter</code>和<code>GlobalFilter</code>，正如我们在FilteringWebHandler中所看到的。其中，GatewayFilter通过配置作用于每个路由，而GlobalFilter则作用于所有的请求。当请求匹配到对应路由时，会将GlobalFilter和已绑定路由的GatewayFilter合并到一起。所有的过滤器都实现了org.springframework.core.Ordered接口，因此会根据过滤器的Order值进行排序</p>
+<p><strong>局部过滤器</strong></p>
+<p>局部过滤器可以对访问的url进行过滤和切面处理</p>
+<p><strong>全局过滤器</strong> &lt;鉴权逻辑&gt;</p>
+<p>全局过滤器(GlobalFilter)作用于所有路由，Spring Cloud Gateway定义了GlobalFilter接口，用户可以自定义实现自己的全局过滤器。通过全局过滤器可以实现对权限的统一校验、安全性验证等功能，并且全局过滤器也是程序员使用比较多的过滤器</p>
+<p>LoadBalance   —&gt; LoadBalanceClientFilter</p>
+<p>HttpClient  —&gt; NettyRoutingFilter&#x2F;NettyWriteResponseFilter</p>
+<p>Websocket  —&gt; WebsocketRoutingFilter</p>
+<p>ForwardPath  —&gt; ForwardPathFilter</p>
+<p>RouteToRequestUrl  —&gt;RouteToRequestUrlFilter</p>
+<p>WebClient  —&gt; WebClientHttpRoutingFilter&#x2F;WebClientWriteResponseFilter</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://system821.github.io">sptiz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://system821.github.io/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/">https://system821.github.io/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://system821.github.io" target="_blank">sptiz's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringCloud%E3%80%81%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/">SpringCloud、框架技术</a></div><div class="post-share"><div class="social-share" data-image="/img/clouds.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"><img class="cover" src="/img/java_new.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">设计模式</div></div><div class="info-2"><div class="info-item-1">设计模式再次强调一点：掌握设计模式相当于华山派的”气宗”，是程序员的内功修为，虽然在同样的学习时间下，类似Python这种”剑宗”的开发模式见效更快，但是长远来看，”气宗”才是走向软件架构师以上级别的必由之路 面向对象基础对象对象是一个自包含的实体，用一组可识别的特性和行为来标识 类类就是具有相同的属性和功能的对象的抽象的集合 12345public class Cat&#123;  public String shout()&#123;    return &quot;喵&quot;;  &#125;&#125;  (1)类名称首字母记着要大写。多个单词则各个首字母大写 (2)对外公开的方法需要用’public’修饰符 实例化实例，就是一个真实的对象。比如我们都是’人’，而你和我其实就是’人’类的实例了。而实例化就是创建对象的过程，使用new关键字来创建。 12Cat cat = new Cat(); //① Cat cat 声明一个Cat对象，对象名为cat ②cat = new Cat() 将此cat对象实例化System.out.print(cat.shout());  ...</div></div></div></a><a class="pagination-related" href="/2026/04/21/spring%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/" title="spring知识集锦"><img class="cover" src="/img/clouds.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">spring知识集锦</div></div><div class="info-2"><div class="info-item-1">Spring知识集锦 什么是ioc容器    ioc容器是springboot的一部分 bean可以创建和管理应用程序所需的所有对象 ioc代表控制反转 不用手动new创建对象   ioc容器里面有很多bean bean直接通过@Autowire进行使用   @Component跟@Bean的区别  @Component直接放置在类上，Spring会自动检测到它并创建它的bean  @Bean则用于方法中，返回该类的对象  @Component是创建bean的一种简单方法  spring  跟 springboot 区别springboot具有自动配置装置,spring则不是springboot内嵌了tomcatspringboot支持H2数据库  @SpringbootApplication 由 @EnableAutoConfiguration、@Configuration跟@ComponentScan 组成  Diapatcher Servlet可以被视为任何Springboot应用程序的交通控制器&#x2F;神经系统,因为所有的api请求都会先进入Dispatcher Se...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/02/SpringCloud/" title="SpringCloud（简）"><img class="cover" src="/img/clouds.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-02</div><div class="info-item-2">SpringCloud（简）</div></div><div class="info-2"><div class="info-item-1">SpringCloudRedispom.xml1234&lt;dependency&gt;        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;        &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;    &lt;/dependency&gt; yaml12345678910111213141516spring:  data:    redis:      host: localhost      port: 6379      database: 0      lettuce:        pool:          max-active: 8          max-idle: 8          min-idle: 0          max-wait: -1ms  jackson:    date-format: yyyy-MM-dd HH:mm:ss    time-zone: GMT+8  注...</div></div></div></a><a class="pagination-related" href="/2026/04/21/spring%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/" title="spring知识集锦"><img class="cover" src="/img/clouds.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-21</div><div class="info-item-2">spring知识集锦</div></div><div class="info-2"><div class="info-item-1">Spring知识集锦 什么是ioc容器    ioc容器是springboot的一部分 bean可以创建和管理应用程序所需的所有对象 ioc代表控制反转 不用手动new创建对象   ioc容器里面有很多bean bean直接通过@Autowire进行使用   @Component跟@Bean的区别  @Component直接放置在类上，Spring会自动检测到它并创建它的bean  @Bean则用于方法中，返回该类的对象  @Component是创建bean的一种简单方法  spring  跟 springboot 区别springboot具有自动配置装置,spring则不是springboot内嵌了tomcatspringboot支持H2数据库  @SpringbootApplication 由 @EnableAutoConfiguration、@Configuration跟@ComponentScan 组成  Diapatcher Servlet可以被视为任何Springboot应用程序的交通控制器&#x2F;神经系统,因为所有的api请求都会先进入Dispatcher Se...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">sptiz</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自由散漫的无聊生活</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud-%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF"><span class="toc-text">SpringCloud 框架技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">整体流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ribbon"><span class="toc-text">Ribbon</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Ribbon-1"><span class="toc-text">Ribbon</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpirngCloud-Gateway"><span class="toc-text">SpirngCloud Gateway</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">过滤器</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/04/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"><img src="/img/java_new.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式"/></a><div class="content"><a class="title" href="/2026/04/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式</a><time datetime="2026-04-26T09:10:37.000Z" title="发表于 2026-04-26 17:10:37">2026-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/" title="SpringCloud框架技术"><img src="/img/clouds.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud框架技术"/></a><div class="content"><a class="title" href="/2026/04/23/SpringCloud%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/" title="SpringCloud框架技术">SpringCloud框架技术</a><time datetime="2026-04-23T05:05:59.000Z" title="发表于 2026-04-23 13:05:59">2026-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/21/spring%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/" title="spring知识集锦"><img src="/img/clouds.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring知识集锦"/></a><div class="content"><a class="title" href="/2026/04/21/spring%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/" title="spring知识集锦">spring知识集锦</a><time datetime="2026-04-21T06:36:57.000Z" title="发表于 2026-04-21 14:36:57">2026-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/14/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/" title="微信登录流程"><img src="/img/wechat.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微信登录流程"/></a><div class="content"><a class="title" href="/2026/04/14/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/" title="微信登录流程">微信登录流程</a><time datetime="2026-04-14T10:34:18.000Z" title="发表于 2026-04-14 18:34:18">2026-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/04/java%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/" title="java框架技术"><img src="/img/bird.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java框架技术"/></a><div class="content"><a class="title" href="/2026/04/04/java%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/" title="java框架技术">java框架技术</a><time datetime="2026-04-04T02:38:57.000Z" title="发表于 2026-04-04 10:38:57">2026-04-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By sptiz</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
