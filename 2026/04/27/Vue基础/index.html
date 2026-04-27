@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Vue基础 | sptiz's blog</title><meta name="author" content="sptiz"><meta name="copyright" content="sptiz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Vue基础脚手架 1npm init vue@latest  各个文件描述 123456789.vscode   					 --- VSCode工具的配置文件 node_modules 			     --- Vue项目的运行依赖文件 public						 --- 资源文件夹（浏览器图标） src						 --- 源码文件夹 .gitignore					 --- git忽略文件 ind">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Vue基础 | sptiz's blog</title><meta name="author" content="sptiz"><meta name="copyright" content="sptiz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Vue基础脚手架 1npm init vue@latest  各个文件描述    文件 文件描述    .vscode VSCode工具的配置文件   node_modules Vue项目的运行依赖文件   public 资源文件夹（浏览器图标）   src 源码文件夹   .gitignore git忽略文件   index.html 如果HTML文件   package.json 信息描述文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue基础">
 <meta property="og:url" content="https://system821.github.io/2026/04/27/Vue%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="sptiz&#39;s blog">
-<meta property="og:description" content="Vue基础脚手架 1npm init vue@latest  各个文件描述 123456789.vscode   					 --- VSCode工具的配置文件 node_modules 			     --- Vue项目的运行依赖文件 public						 --- 资源文件夹（浏览器图标） src						 --- 源码文件夹 .gitignore					 --- git忽略文件 ind">
+<meta property="og:description" content="Vue基础脚手架 1npm init vue@latest  各个文件描述    文件 文件描述    .vscode VSCode工具的配置文件   node_modules Vue项目的运行依赖文件   public 资源文件夹（浏览器图标）   src 源码文件夹   .gitignore git忽略文件   index.html 如果HTML文件   package.json 信息描述文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://system821.github.io/img/clouds.png">
 <meta property="article:published_time" content="2026-04-27T09:58:08.000Z">
-<meta property="article:modified_time" content="2026-04-27T10:01:32.579Z">
+<meta property="article:modified_time" content="2026-04-27T10:20:15.195Z">
 <meta property="article:author" content="sptiz">
 <meta property="article:tag" content="前端技术">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "https://system821.github.io/2026/04/27/Vue%E5%9F%BA%E7%A1%80/",
   "image": "https://system821.github.io/img/clouds.png",
   "datePublished": "2026-04-27T09:58:08.000Z",
-  "dateModified": "2026-04-27T10:01:32.579Z",
+  "dateModified": "2026-04-27T10:20:15.195Z",
   "author": [
     {
       "@type": "Person",
@@ -161,22 +161,55 @@
   pageType: 'post'
 }</script><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-shiki-plugin@latest/lib/codeblock.css">
-<style>:root{--hl-color:#90a4ae;--hl-bg:#f6f8fa;--hltools-bg:#e6ebf1;--hltools-color:#90a4ae;--hlnumber-bg:#f6f8fa;--hlnumber-color:rgba(144,164,174,0.5);--hlscrollbar-bg:#dce4eb;--hlexpand-bg:linear-gradient(180deg,rgba(246,248,250,0.1),rgba(246,248,250,0.9))}</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/clouds.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">sptiz's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Vue基础</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Vue基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-27T09:58:08.000Z" title="发表于 2026-04-27 17:58:08">2026-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-27T10:01:32.579Z" title="更新于 2026-04-27 18:01:32">2026-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/">前端技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h1><p>脚手架</p>
+<style>:root{--hl-color:#90a4ae;--hl-bg:#f6f8fa;--hltools-bg:#e6ebf1;--hltools-color:#90a4ae;--hlnumber-bg:#f6f8fa;--hlnumber-color:rgba(144,164,174,0.5);--hlscrollbar-bg:#dce4eb;--hlexpand-bg:linear-gradient(180deg,rgba(246,248,250,0.1),rgba(246,248,250,0.9))}</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/clouds.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">sptiz's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Vue基础</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Vue基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-27T09:58:08.000Z" title="发表于 2026-04-27 17:58:08">2026-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-27T10:20:15.195Z" title="更新于 2026-04-27 18:20:15">2026-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/">前端技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h1><p><strong>脚手架</strong></p>
 <figure class="shiki bash"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#6F42C1">npm</span><span style="color:#032F62"> init</span><span style="color:#032F62"> vue@latest</span></span></code></pre></div></div></figure>
 
-<p>各个文件描述</p>
-<figure class="shiki java"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">.vscode   					 </span><span style="color:#D73A49">---</span><span style="color:#24292E"> VSCode工具的配置文件</span></span>
-<span class="line"><span style="color:#24292E">node_modules 			     </span><span style="color:#D73A49">---</span><span style="color:#24292E"> Vue项目的运行依赖文件</span></span>
-<span class="line"><span style="color:#D73A49">public</span><span style="color:#D73A49">						 ---</span><span style="color:#24292E"> 资源文件夹（浏览器图标）</span></span>
-<span class="line"><span style="color:#24292E">src						 </span><span style="color:#D73A49">---</span><span style="color:#24292E"> 源码文件夹</span></span>
-<span class="line"><span style="color:#24292E">.gitignore					 </span><span style="color:#D73A49">---</span><span style="color:#24292E"> git忽略文件</span></span>
-<span class="line"><span style="color:#24292E">index.html					 </span><span style="color:#D73A49">---</span><span style="color:#24292E"> 如果HTML文件</span></span>
-<span class="line"><span style="color:#D73A49">package</span><span style="color:#24292E">.json				 </span><span style="color:#B31D28;font-style:italic">---</span><span style="color:#24292E"> 信息描述文件</span></span>
-<span class="line"><span style="color:#B31D28;font-style:italic">README</span><span style="color:#24292E">.md					 </span><span style="color:#B31D28;font-style:italic">---</span><span style="color:#24292E"> 注释文件</span></span>
-<span class="line"><span style="color:#24292E">vite.cofig.js  		     </span><span style="color:#B31D28;font-style:italic">---</span><span style="color:#B31D28;font-style:italic"> V</span><span style="color:#24292E">ue配置文件</span></span></code></pre></div></div></figure>
-
-<p>模版语法</p>
-<p>文本插值</p>
+<p><strong>各个文件描述</strong></p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>文件描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.vscode</td>
+<td>VSCode工具的配置文件</td>
+</tr>
+<tr>
+<td>node_modules</td>
+<td>Vue项目的运行依赖文件</td>
+</tr>
+<tr>
+<td>public</td>
+<td>资源文件夹（浏览器图标）</td>
+</tr>
+<tr>
+<td>src</td>
+<td>源码文件夹</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>git忽略文件</td>
+</tr>
+<tr>
+<td>index.html</td>
+<td>如果HTML文件</td>
+</tr>
+<tr>
+<td>package.json</td>
+<td>信息描述文件</td>
+</tr>
+<tr>
+<td>README.md</td>
+<td>注释文件</td>
+</tr>
+<tr>
+<td>vite.cofig.js</td>
+<td>Vue配置文件</td>
+</tr>
+</tbody></table>
+<p><strong>文本插值</strong></p>
 <figure class="shiki vue"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">&#x3C;</span><span style="color:#22863A">template</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">h3</span><span style="color:#24292E">>模版语法&#x3C;/</span><span style="color:#22863A">h3</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">p</span><span style="color:#24292E">>{{msg}}&#x3C;/</span><span style="color:#22863A">p</span><span style="color:#24292E">></span></span>
@@ -199,7 +232,7 @@
 <span class="line"><span style="color:#24292E">  }</span></span>
 <span class="line"><span style="color:#24292E">&#x3C;/</span><span style="color:#22863A">script</span><span style="color:#24292E">></span></span></code></pre></div></div></figure>
 
-<p>属性绑定</p>
+<p><strong>属性绑定</strong></p>
 <figure class="shiki vue"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">&#x3C;</span><span style="color:#22863A">template</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E"> &#x3C;</span><span style="color:#22863A">div</span><span style="color:#6F42C1"> v-bind:id</span><span style="color:#24292E">=</span><span style="color:#032F62">"dynamicId"</span><span style="color:#6F42C1"> v-bind:class</span><span style="color:#24292E">=</span><span style="color:#032F62">"dynamicClass"</span><span style="color:#24292E">>测试&#x3C;/</span><span style="color:#22863A">div</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">div</span><span style="color:#6F42C1"> :id</span><span style="color:#24292E">=</span><span style="color:#032F62">"dynamicId"</span><span style="color:#6F42C1"> :class</span><span style="color:#24292E">=</span><span style="color:#032F62">"dynamicClass"</span><span style="color:#24292E">>测试2&#x3C;/</span><span style="color:#22863A">div</span><span style="color:#24292E">></span></span>
@@ -222,7 +255,7 @@
 <span class="line"><span style="color:#24292E">  }</span></span>
 <span class="line"><span style="color:#24292E">&#x3C;/</span><span style="color:#22863A">script</span><span style="color:#24292E">></span></span></code></pre></div></div></figure>
 
-<p>条件渲染</p>
+<p><strong>条件渲染</strong></p>
 <p>条件语句：<code>v-if</code> <code> v-else</code> <code> v-else-if</code> <code> v-show</code></p>
 <figure class="shiki vue"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">&#x3C;</span><span style="color:#22863A">template</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">h3</span><span style="color:#24292E">>条件渲染&#x3C;/</span><span style="color:#22863A">h3</span><span style="color:#24292E">></span></span>
@@ -252,7 +285,7 @@
 <p><code>v-if</code>也是惰性的：如果在初次渲染时条件值为false,则不会做任何事。条件区块只有当条件首次变为true时才被渲染。</p>
 <p>相比之下，<code>v-show</code>简单许多，元素无论初始条件如何，始终会被渲染，只有css display属性会被切换</p>
 <p>总的来说：<code>v-if</code>有更高的切换开销，而<code>v-show</code>有更高的初始渲染开销。因此，如果需要频繁切换，则使用<code>v-show</code>较好；如果在运行时绑定条件很少改变，则<code>v-if</code>会更合适</p>
-<p>列表渲染</p>
+<p><strong>列表渲染</strong></p>
 <figure class="shiki vue"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">&#x3C;</span><span style="color:#22863A">template</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">div</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">    &#x3C;</span><span style="color:#22863A">p</span><span style="color:#6F42C1"> v-for</span><span style="color:#24292E">=</span><span style="color:#032F62">"(item, index) in names"</span><span style="color:#6F42C1"> :key</span><span style="color:#24292E">=</span><span style="color:#032F62">"index"</span><span style="color:#24292E">> {{item}} &#x3C;/</span><span style="color:#22863A">p</span><span style="color:#24292E">></span></span>
@@ -275,9 +308,7 @@
 <span class="line"><span style="color:#24292E">}</span></span>
 <span class="line"><span style="color:#24292E">&#x3C;/</span><span style="color:#22863A">script</span><span style="color:#24292E">></span></span></code></pre></div></div></figure>
 
-
-
-<p>事件处理</p>
+<p><strong>事件处理</strong></p>
 <p>使用<code>v-on</code>指令（简写为@）来监听DOM事件，并在事件触发时执行对于的JavaScript，用法：<code>v-on:click=&quot;methodName&quot; </code>或 <code>@click=&quot;handler&quot;</code></p>
 <p>事件处理器的值可以是：</p>
 <p>① 内联事件处理器：事件被触发时执行的内联javascript语句</p>
@@ -305,7 +336,7 @@
 <span class="line"><span style="color:#24292E">} </span></span>
 <span class="line"><span style="color:#24292E">&#x3C;/</span><span style="color:#22863A">script</span><span style="color:#24292E">></span></span></code></pre></div></div></figure>
 
-<p>事件传参</p>
+<p><strong>事件传参</strong></p>
 <figure class="shiki vue"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">&#x3C;</span><span style="color:#22863A">template</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">div</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">    &#x3C;</span><span style="color:#22863A">h3</span><span style="color:#24292E">>事件传参&#x3C;/</span><span style="color:#22863A">h3</span><span style="color:#24292E">></span></span>
@@ -357,7 +388,7 @@
 <span class="line"><span style="color:#24292E">}</span></span>
 <span class="line"><span style="color:#24292E">&#x3C;/</span><span style="color:#22863A">style</span><span style="color:#24292E">></span></span></code></pre></div></div></figure>
 
-<p>数组变化侦测</p>
+<p><strong>数组变化侦测</strong></p>
 <figure class="shiki vue"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#24292E">&#x3C;</span><span style="color:#22863A">template</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">  &#x3C;</span><span style="color:#22863A">div</span><span style="color:#24292E">></span></span>
 <span class="line"><span style="color:#24292E">    &#x3C;</span><span style="color:#22863A">h3</span><span style="color:#24292E">>数组变化侦听&#x3C;/</span><span style="color:#22863A">h3</span><span style="color:#24292E">></span></span>
@@ -415,7 +446,7 @@
 <span class="line"><span style="color:#24292E">}</span></span>
 <span class="line"><span style="color:#24292E">&#x3C;/</span><span style="color:#22863A">style</span><span style="color:#24292E">></span></span></code></pre></div></div></figure>
 
-<p>计算属性</p>
+<p><strong>计算属性</strong></p>
 <figure class="shiki java"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">template</span><span style="color:#D73A49">></span></span>
 <span class="line"><span style="color:#D73A49">  &#x3C;</span><span style="color:#24292E">div</span><span style="color:#D73A49">></span></span>
 <span class="line"><span style="color:#D73A49">   &#x3C;</span><span style="color:#24292E">h3</span><span style="color:#D73A49">></span><span style="color:#24292E">{{itbaizhan.name}}</span><span style="color:#D73A49">&#x3C;/</span><span style="color:#24292E">h3</span><span style="color:#D73A49">></span></span>
